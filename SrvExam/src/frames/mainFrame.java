@@ -15,11 +15,11 @@ public class mainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
+            .addGap(0, 794, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 471, Short.MAX_VALUE)
         );
 
         pack();
