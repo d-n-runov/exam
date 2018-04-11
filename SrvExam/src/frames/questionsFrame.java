@@ -1,5 +1,6 @@
 package frames;
 public class questionsFrame extends javax.swing.JFrame {
+    public static int init = 0;
     public questionsFrame() {
         initComponents();
     }
@@ -9,6 +10,11 @@ public class questionsFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Вопросы");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -24,6 +30,10 @@ public class questionsFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        init = 0;
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main() {
         try {
