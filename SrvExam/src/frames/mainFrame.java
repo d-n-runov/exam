@@ -59,7 +59,7 @@ public class mainFrame extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Пользователи системы"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Пользователи в сети"));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
