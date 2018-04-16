@@ -1,6 +1,10 @@
 package sideFrames;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import srvexam.dataBase;
 
 public class userAdd extends javax.swing.JFrame {
     public userAdd() {
@@ -107,6 +111,15 @@ public class userAdd extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Заполните поле Отчество", "Error", HEIGHT);
         }else if(jPasswordField1.getText().length() == 0){
             JOptionPane.showMessageDialog(rootPane, "Заполните поле Пароль", "Error", HEIGHT);
+        }else{
+            String FIO = jTextField1.getText()+" "+jTextField2.getText()+" "+jTextField3.getText();
+            try {
+                dataBase.addNewUser(FIO, jTextField1.getText(), jPasswordField1.getText());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(userAdd.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(userAdd.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
