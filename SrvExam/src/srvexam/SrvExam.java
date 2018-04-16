@@ -4,10 +4,20 @@ import frames.groupsFrame;
 import frames.mainFrame;
 import frames.questionsFrame;
 import frames.usersFrame;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SrvExam {
     public static void main(String[] args) {
-        mainFrame.main();
+        try {
+            dataBase.Conn();
+            mainFrame.main();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SrvExam.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(SrvExam.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void callFrames(String nameFrame) {
