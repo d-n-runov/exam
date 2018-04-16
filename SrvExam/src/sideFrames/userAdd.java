@@ -101,6 +101,12 @@ public class userAdd extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(jTextField1.getText().length() == 0){
             JOptionPane.showMessageDialog(rootPane, "Заполните поле Фамилия", "Error", HEIGHT);
+        }else if(jTextField2.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Заполните поле Имя", "Error", HEIGHT);
+        }else if(jTextField3.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Заполните поле Отчество", "Error", HEIGHT);
+        }else if(jPasswordField1.getText().length() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Заполните поле Пароль", "Error", HEIGHT);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
