@@ -10,14 +10,7 @@ import java.util.logging.Logger;
 
 public class SrvExam {
     public static void main(String[] args) {
-        try {
-            dataBase.Conn();
-            mainFrame.main();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(SrvExam.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(SrvExam.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        mainFrame.main();        
     }
     
     public static void callFrames(String nameFrame) {
