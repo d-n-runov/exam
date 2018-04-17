@@ -1,5 +1,7 @@
 package frames;
 
+import sideFrames.baseSettings;
+
 public class mainFrame extends javax.swing.JFrame {
     public mainFrame() {
         initComponents();
@@ -124,6 +126,11 @@ public class mainFrame extends javax.swing.JFrame {
         jMenu2.add(jMenuItem8);
 
         jMenuItem9.setText("Настройки подключения к базе данных");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem9);
 
         jMenuBar1.add(jMenu2);
@@ -207,6 +214,10 @@ public class mainFrame extends javax.swing.JFrame {
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         srvexam.SrvExam.callFrames("groupsFrame");
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        baseSettings.main();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     public static void main() {
         try {
