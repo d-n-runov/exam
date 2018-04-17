@@ -1,6 +1,9 @@
 package srvexam;
 
+import frames.usersFrame;
 import java.sql.*;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 public class dataBase {
     public static Connection conn;
@@ -29,7 +32,27 @@ public class dataBase {
         Close();
     }
     
-    public static void getUsers() throws ClassNotFoundException, SQLException{
-        
+    public static void refreshUsersFrame() throws ClassNotFoundException, SQLException{
+        Conn();        
+        DefaultTableModel dtm = (DefaultTableModel)usersFrame.jTable1.getModel();
+        usersFrame.jTable1.setModel(dtm);
+        Vector header = new Vector();
+        header.add("ФИО");
+        header.add("login");
+        Vector data = new Vector();
+        data.add("1");
+        data.add("2");
+        dtm.setDataVector(data, header); 
+        statmt = conn.createStatement();
+        resSet = statmt.executeQuery("SELECT * FROM users;");
+        while(resSet.next()){
+            Vector str = new Vector();
+            String FIO = resSet.getString("FIO");
+            String login = resSet.getString("login");
+            str.add(FIO);
+            str.add(login);
+            System.out.println(str);
+        } 
+        Close();
     }
 }

@@ -1,6 +1,10 @@
 package frames;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sideFrames.userAdd;
+import srvexam.dataBase;
 
 public class usersFrame extends javax.swing.JFrame {
     public static int init = 0;
@@ -124,6 +128,6 @@ public class usersFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

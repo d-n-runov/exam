@@ -1,6 +1,10 @@
 package frames;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sideFrames.baseSettings;
+import srvexam.dataBase;
 
 public class mainFrame extends javax.swing.JFrame {
     public mainFrame() {
@@ -226,6 +230,13 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         srvexam.SrvExam.callFrames("usersFrame");
+        try {
+            dataBase.refreshUsersFrame();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
