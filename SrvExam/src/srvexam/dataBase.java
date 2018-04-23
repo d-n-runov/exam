@@ -57,4 +57,11 @@ public class dataBase {
         statmt.execute("DELETE FROM users WHERE login = '"+login+"';");
         Close();
     }
+    
+    public static void refreshUserData(String FIO, String login, String oldLogin) throws ClassNotFoundException, SQLException{
+        Conn();
+        statmt = conn.createStatement();
+        statmt.executeUpdate("UPDATE users SET FIO = '"+FIO+"', login = '"+login+"' WHERE login = '"+oldLogin+"';");
+        Close();        
+    }
 }

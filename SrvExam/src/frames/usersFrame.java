@@ -60,6 +60,11 @@ public class usersFrame extends javax.swing.JFrame {
         });
 
         jButton3.setText("Редактировать");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Открыть статистику пользователя");
 
@@ -140,6 +145,17 @@ public class usersFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Выберите одного пользователя!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int rowSel = usersFrame.jTable1.getSelectedRowCount();
+        if(rowSel == 1){
+            int selected = usersFrame.jTable1.getSelectedRow();
+            String FIO = usersFrame.jTable1.getValueAt(selected, 0).toString();
+            sideFrames.refreshUser.main(FIO);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Выберите одного пользователя!");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     
     public static void main() {
