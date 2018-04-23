@@ -1,8 +1,10 @@
 package frames;
 
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import sideFrames.userAdd;
 import srvexam.dataBase;
 
@@ -51,6 +53,11 @@ public class usersFrame extends javax.swing.JFrame {
         });
 
         jButton2.setText("Удалить");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Редактировать");
 
@@ -109,6 +116,30 @@ public class usersFrame extends javax.swing.JFrame {
             Logger.getLogger(mainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int rowSel = usersFrame.jTable1.getSelectedRowCount();
+        if(rowSel == 1){
+            int selected = usersFrame.jTable1.getSelectedRow();
+            String login = usersFrame.jTable1.getValueAt(selected, 1).toString();
+            int i = JOptionPane.showConfirmDialog(rootPane, "Пользователь "+login+" и его данные будут удалены", "Удаление", WIDTH);
+            if (i == 0){
+                try {
+                    dataBase.deleteUser(login);
+                    dataBase.refreshUsersFrame();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(usersFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(usersFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(rootPane, "Пользователь "+login+" удален!");
+            }else{
+                System.out.println("CANCEL");
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Выберите одного пользователя!");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     
     public static void main() {
