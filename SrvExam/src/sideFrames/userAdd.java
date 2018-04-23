@@ -115,6 +115,8 @@ public class userAdd extends javax.swing.JFrame {
             String FIO = jTextField1.getText()+" "+jTextField2.getText()+" "+jTextField3.getText();
             try {
                 dataBase.addNewUser(FIO, jTextField1.getText(), jPasswordField1.getText());
+                dataBase.refreshUsersFrame();
+                this.dispose();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(userAdd.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

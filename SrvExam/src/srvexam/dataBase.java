@@ -40,8 +40,6 @@ public class dataBase {
         header.add("ФИО");
         header.add("login");
         Vector data = new Vector();
-        data.add("1");
-        data.add("2");
         dtm.setDataVector(data, header); 
         statmt = conn.createStatement();
         resSet = statmt.executeQuery("SELECT * FROM users;");
@@ -51,7 +49,7 @@ public class dataBase {
             String login = resSet.getString("login");
             str.add(FIO);
             str.add(login);
-            System.out.println(str);
+            data.add(str);
         } 
         Close();
     }
