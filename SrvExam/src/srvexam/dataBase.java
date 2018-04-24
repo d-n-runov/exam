@@ -96,4 +96,10 @@ public class dataBase {
         statmt.execute("DELETE FROM groups WHERE name = '"+name+"';");
         Close();
     }
+    
+    public static void refreshGroup() throws ClassNotFoundException, SQLException {
+        Conn();
+        
+        Close();
+    }
 }
