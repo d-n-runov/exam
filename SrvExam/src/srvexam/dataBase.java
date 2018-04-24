@@ -1,5 +1,6 @@
 package srvexam;
 
+import frames.groupsFrame;
 import frames.usersFrame;
 import java.sql.*;
 import java.util.Vector;
@@ -32,7 +33,6 @@ public class dataBase {
     public static void refreshUsersFrame() throws ClassNotFoundException, SQLException{
         Conn();        
         DefaultTableModel dtm = (DefaultTableModel)usersFrame.jTable1.getModel();
-        usersFrame.jTable1.setModel(dtm);
         Vector header = new Vector();
         header.add("ФИО");
         header.add("login");
@@ -63,5 +63,37 @@ public class dataBase {
         statmt = conn.createStatement();
         statmt.executeUpdate("UPDATE users SET FIO = '"+FIO+"', login = '"+login+"' WHERE login = '"+oldLogin+"';");
         Close();        
+    }
+    
+    public static void addNewGroup(String name) throws ClassNotFoundException, SQLException {
+        Conn();
+        statmt = conn.createStatement();
+        statmt.execute("INSERT INTO 'groups'('name')VALUES('"+name+"');");
+        Close();
+    }
+    
+    public static void refreshGroupFrame() throws ClassNotFoundException, SQLException {
+       Conn();
+       DefaultTableModel dtm = (DefaultTableModel)groupsFrame.jTable1.getModel();
+       Vector header = new Vector();
+       header.add("Название");
+       Vector data = new Vector();
+       dtm.setDataVector(data, header);
+       statmt = conn.createStatement();
+       resSet = statmt.executeQuery("SELECT * FROM groups");
+       while(resSet.next()){
+           Vector str = new Vector();
+           String name = resSet.getString("name");
+           str.add(name);
+           data.add(str);
+       }
+       Close();
+    }
+    
+    public static void deleteGroup(String name) throws ClassNotFoundException, SQLException {
+        Conn();
+        statmt = conn.createStatement();
+        statmt.execute("DELETE FROM groups WHERE name = '"+name+"';");
+        Close();
     }
 }

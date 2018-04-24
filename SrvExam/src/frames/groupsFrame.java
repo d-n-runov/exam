@@ -1,4 +1,11 @@
 package frames;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import srvexam.dataBase;
+
 public class groupsFrame extends javax.swing.JFrame {
     public static int init = 0;
     public groupsFrame() {
@@ -19,6 +26,9 @@ public class groupsFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Группы");
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -35,8 +45,18 @@ public class groupsFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Добавить");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Удалить");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Редактировать");
 
@@ -82,6 +102,37 @@ public class groupsFrame extends javax.swing.JFrame {
         init = 0;
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        sideFrames.groupAdd.main();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        try {
+            dataBase.refreshGroupFrame();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(groupsFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(groupsFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int selected = jTable1.getSelectedRowCount();
+        if (selected == 1){
+            int rowS = jTable1.getSelectedRow();
+            try {
+                dataBase.deleteGroup(jTable1.getValueAt(rowS, 0).toString());
+                dataBase.refreshGroupFrame();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(groupsFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(groupsFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }            
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Выберите одну группу!");
+        }        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -114,6 +165,6 @@ public class groupsFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
